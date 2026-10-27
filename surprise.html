@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siva's Birthday Surprise ❤️</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:22px 14px;text-align:center;font-family:Arial,sans-serif;color:#85164f;background:linear-gradient(135deg,#fff2fa,#e9dbff,#ffe2ec)}.card{max-width:900px;margin:12px auto;padding:26px 18px;background:#ffffffdf;border-radius:26px;box-shadow:0 10px 30px #9c4b7833}h1{color:#e52d87;font-size:clamp(28px,5vw,42px)}h2{color:#a51b64}.photos{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin:26px 0}.photos img{width:320px;max-width:100%;height:340px;object-fit:cover;border:4px solid white;border-radius:20px;box-shadow:0 0 16px #ff69b4;animation:glow 1.7s infinite alternate}@keyframes glow{from{box-shadow:0 0 7px #ffabd1;transform:scale(.99)}to{box-shadow:0 0 23px #f02790;transform:scale(1.015)}}p{font-size:18px;line-height:1.7}.btn{margin:12px 7px;padding:14px 25px;border:0;border-radius:32px;background:linear-gradient(135deg,#ff3696,#bd42d1);color:#fff;font-size:17px;font-weight:bold;cursor:pointer}.music-note{font-size:28px}#playButton{display:none}#musicStatus{font-size:15px;color:#8b4772}
+</style>
+</head>
+<body><main class="card">
+<h1>🎁 Your Birthday Surprise, Siva! ❤️</h1>
+<p>These memories are special, just like you! 💖</p>
+<div class="photos">
+  <img src="photo1.jpeg" alt="Siva birthday memory one">
+  <img src="photo2.jpeg" alt="Siva birthday memory two">
+</div>
+<h2>💖 I Love and Miss You, Siva! 💖</h2>
+<p>Your special song is here to make this moment beautiful. 🎵</p>
+<div class="music-note">🎶 ❤️ 🎶</div>
+<audio id="birthdaySong" autoplay loop preload="auto"><source src="birthday.mp3" type="audio/mpeg">Your browser does not support audio.</audio>
+<button class="btn" id="playButton" onclick="playMusic()">🎵 Tap to Play Birthday Song</button>
+<p id="musicStatus" aria-live="polite">Trying to start your birthday song…</p>
+<button class="btn" onclick="window.location.href='next.html'">Next Page ➡️</button>
+</main>
+<script>
+const song=document.getElementById('birthdaySong');
+const playButton=document.getElementById('playButton');
+const statusText=document.getElementById('musicStatus');
+function playMusic(){song.play().then(()=>{playButton.style.display='none';statusText.textContent='🎵 Your birthday song is playing!';}).catch(()=>{playButton.style.display='inline-block';statusText.textContent='Tap the button to start the music.';});}
+window.addEventListener('load',()=>{song.play().then(()=>{statusText.textContent='🎵 Your birthday song is playing!';}).catch(()=>{playButton.style.display='inline-block';statusText.textContent='Your browser blocked autoplay. Tap below to play the song.';});});
+// Detect missing photos instead of silently leaving broken-image icons.
+document.querySelectorAll('.photos img').forEach(img=>img.addEventListener('error',()=>{img.alt='Photo could not load: '+img.getAttribute('src');img.style.display='none';}));
+</script></body></html>
